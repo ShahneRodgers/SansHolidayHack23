@@ -11,21 +11,25 @@
       
       
       
+        <link rel="prev" href="o10.html">
       
       
-      <link rel="icon" href="/img/misc/favicon.ico">
+        <link rel="next" href="o12.html">
+      
+      
+      <link rel="icon" href="../img/misc/favicon.ico">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
     
     
       
-        <title>SANS Holiday Hack Challenge 2023 Write-Up</title>
+        <title>Vol 3 - SANS Holiday Hack Challenge 2023 Write-Up</title>
       
     
     
-      <link rel="stylesheet" href="/assets/stylesheets/main.50c56a3b.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.50c56a3b.min.css">
       
         
-        <link rel="stylesheet" href="/assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -44,9 +48,9 @@
       
     
     
-      <link rel="stylesheet" href="/css/extra.css">
+      <link rel="stylesheet" href="../css/extra.css">
     
-    <script>__md_scope=new URL("/",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -71,6 +75,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#game-cartridges-vol-3" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -83,7 +92,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="/index.html" title="SANS Holiday Hack Challenge 2023 Write-Up" class="md-header__button md-logo" aria-label="SANS Holiday Hack Challenge 2023 Write-Up" data-md-component="logo">
+    <a href="../index.html" title="SANS Holiday Hack Challenge 2023 Write-Up" class="md-header__button md-logo" aria-label="SANS Holiday Hack Challenge 2023 Write-Up" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 15.26V13h-4l4-4h-3l3-3h-2l3-3 3 3h-2l3 3h-3l4 4h-4v2.76c2.13.71 3.68 1.91 4 3.24-1.7-.13-3.38-.46-5-1-1.21.61-2.63 1-4 1-1.29 0-2.83-.42-4-1-1.63.54-3.28.87-5 1 .54-2.23 4.4-4 9-4 1.05 0 2.06.09 3 .26M8 19s-3 1-6 1v2c3 0 6-1 6-1s2 1 4 1 4-1 4-1 3 1 6 1v-2c-3 0-6-1-6-1s-2 1-4 1-4-1-4-1Z"/></svg>
@@ -103,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              Vol 3
             
           </span>
         </div>
@@ -206,7 +215,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/index.html" title="SANS Holiday Hack Challenge 2023 Write-Up" class="md-nav__button md-logo" aria-label="SANS Holiday Hack Challenge 2023 Write-Up" data-md-component="logo">
+    <a href="../index.html" title="SANS Holiday Hack Challenge 2023 Write-Up" class="md-nav__button md-logo" aria-label="SANS Holiday Hack Challenge 2023 Write-Up" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 15.26V13h-4l4-4h-3l3-3h-2l3-3 3 3h-2l3 3h-3l4 4h-4v2.76c2.13.71 3.68 1.91 4 3.24-1.7-.13-3.38-.46-5-1-1.21.61-2.63 1-4 1-1.29 0-2.83-.42-4-1-1.63.54-3.28.87-5 1 .54-2.23 4.4-4 9-4 1.05 0 2.06.09 3 .26M8 19s-3 1-6 1v2c3 0 6-1 6-1s2 1 4 1 4-1 4-1 3 1 6 1v-2c-3 0-6-1-6-1s-2 1-4 1-4-1-4-1Z"/></svg>
@@ -224,7 +233,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/index.html" class="md-nav__link">
+      <a href="../index.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -241,8 +250,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -251,12 +262,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
@@ -270,7 +281,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Objectives
@@ -321,7 +332,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o2.html" class="md-nav__link">
+      <a href="o2.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -344,7 +355,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o3.html" class="md-nav__link">
+      <a href="o3.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -367,7 +378,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o4.html" class="md-nav__link">
+      <a href="o4.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -390,7 +401,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o5.html" class="md-nav__link">
+      <a href="o5.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -458,7 +469,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o6.html" class="md-nav__link">
+      <a href="o6.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -481,7 +492,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o7.html" class="md-nav__link">
+      <a href="o7.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -504,7 +515,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o15.html" class="md-nav__link">
+      <a href="o15.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -572,7 +583,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o8.html" class="md-nav__link">
+      <a href="o8.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -595,7 +606,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o18.html" class="md-nav__link">
+      <a href="o18.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -618,7 +629,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o19.html" class="md-nav__link">
+      <a href="o19.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -646,19 +657,21 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" checked>
         
           
           <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
@@ -672,7 +685,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_4">
             <span class="md-nav__icon md-icon"></span>
             Game Cartridges
@@ -686,7 +699,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o9.html" class="md-nav__link">
+      <a href="o9.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -709,7 +722,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o10.html" class="md-nav__link">
+      <a href="o10.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -729,10 +742,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="/objectives/o11.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
+  
+  <span class="md-ellipsis">
+    Vol 3
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="o11.html" class="md-nav__link md-nav__link--active">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -743,6 +778,62 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objective" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objective
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hints
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solution
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#response" class="md-nav__link">
+    <span class="md-ellipsis">
+      Response
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -800,7 +891,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o12.html" class="md-nav__link">
+      <a href="o12.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -823,7 +914,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o13.html" class="md-nav__link">
+      <a href="o13.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -846,7 +937,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o14.html" class="md-nav__link">
+      <a href="o14.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -914,7 +1005,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o16.html" class="md-nav__link">
+      <a href="o16.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -937,7 +1028,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o17.html" class="md-nav__link">
+      <a href="o17.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -1005,7 +1096,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o20.html" class="md-nav__link">
+      <a href="o20.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -1028,7 +1119,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o21.html" class="md-nav__link">
+      <a href="o21.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -1051,7 +1142,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o22.html" class="md-nav__link">
+      <a href="o22.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -1129,7 +1220,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/easter_eggs.html" class="md-nav__link">
+      <a href="../easter_eggs.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1162,8 +1253,96 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
-  <h1>404 - Not found</h1>
+                  
 
+
+<h1 id="game-cartridges-vol-3">Game Cartridges: Vol 3<a class="headerlink" href="#game-cartridges-vol-3" title="Permanent link">⚓︎</a></h1>
+<p><strong>Difficulty</strong>: <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 12 12 2 5 12h1.86L3 18h7v4h4v-4h7l-3.86-6H19Z"/></svg></span><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 12 12 2 5 12h1.86L3 18h7v4h4v-4h7l-3.86-6H19Z"/></svg></span><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 12 12 2 5 12h1.86L3 18h7v4h4v-4h7l-3.86-6H19Z"/></svg></span><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 12 12 2 5 12h1.86L3 18h7v4h4v-4h7l-3.86-6H19m-3.84-2H13.5l3.84 6H6.67l3.86-6H8.84L12 5.5l3.16 4.5Z"/></svg></span><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 12 12 2 5 12h1.86L3 18h7v4h4v-4h7l-3.86-6H19m-3.84-2H13.5l3.84 6H6.67l3.86-6H8.84L12 5.5l3.16 4.5Z"/></svg></span><br/>
+<strong>Direct link</strong>: <a href="https://gamegosling.com/vol3-7bNwQKGBFNGQT1/index.html?&amp;challenge=gameboy3">Vol III</a></p>
+<h2 id="objective">Objective<a class="headerlink" href="#objective" title="Permanent link">⚓︎</a></h2>
+<div class="admonition question">
+<p class="admonition-title">Request</p>
+<p>Find the third Gamegosling cartridge and beat the game</p>
+</div>
+<details class="quote">
+<summary>Tinsel Upatree</summary>
+<p>I can't believe I was actually able to find this underground cavern!<br/>
+I discovered what looked liike an old pirate map in the attic of one of those huts in Rainraster Cliffs, and it actually led somewhere!<br/>
+But now that I've seen where it leads, I think this might've been a bad idea. This place is scary! Maybe you want to take it from here?<br/>
+I'm sure that cartridge is right nearby. Start walking around!<br/>
+Once you run into it, check back with me and I'll tell you what I know about winning.<br/>
+Good luck!</p>
+</details>
+<h2 id="hints">Hints<a class="headerlink" href="#hints" title="Permanent link">⚓︎</a></h2>
+<details class="tip">
+<summary>Gameboy 2</summary>
+<p>1) This one is a bit long, it never hurts to save your progress! 2) 8bit systems have much smaller registers than you're used to. 3) Isn't this great?!? The coins are OVERFLOWing in their abundance.</p>
+</details>
+<h2 id="solution">Solution<a class="headerlink" href="#solution" title="Permanent link">⚓︎</a></h2>
+<p>The cartridge is once again duck-shaped and is found pretty easily by walking across to the left of Driftbit Grotto</p>
+<p><img alt="duck" src="../img/objectives/o11/duck.png" /></p>
+<p>Like in the previous objective, we want to open this one in our own emulator so we first download the <code>game.gb</code>.</p>
+<details class="tip">
+<summary>Ghidra</summary>
+<p>I originally tried to solve this by using Ghidra to look for the overflow message and to figure out where that was called from. You can probably do that if you set Ghidra up to run the emulation (there are guides of how online), but it's not the easiest approach since the static decompilation couldn't find references to the string. It also confused me since I saw some of the later-game strings and expected Jared to change his message when I had the correct score.</p>
+</details>
+<p>Playing through this game normally, we'll eventually see the coins overflow after reaching 998 and we'll also see Jared talk about how back in his day, it was "three nines". That seems to imply the goal is to get a score of 999, but how?</p>
+<details class="tip">
+<summary>The Manual Option</summary>
+<p>I originally tried saving the state file with different values and comparing to find which had changed. But a lot of values change (and equally, a lot remain the same) so it's a bit tedious to do manually. I thought about programming something to automatically find the bytes, but fortunately that's already been done for me!</p>
+</details>
+<p>The easiest way to solve this is to open the game in BGB and follow their <a href="https://bgb.bircd.org/manual.html#cheatsearcher">cheat searcher guide</a></p>
+<details class="tip">
+<summary>Cheat searching</summary>
+<p>Open the game in BGB and then open the cheat searcher by choosing right-click &gt; other &gt; cheat searcher. You can try 8 bit values, since those would make sense, but I found 16 bit values worked better. Click start and then wander around a bit without collecting coins. Make sure <code>values not equal to</code> is selected and periodically click <code>search</code>. Now, collect 1, 10 and 100 coins so that your score is <code>111</code>. This means that the value will be preserved regardless of whether the data is stored in one byte or separately (it's stored separately). Make sure values <code>above the previous value</code> is selected and click <code>search</code>. Go back and save so that your score returns to 0. Make sure <code>values below the previous value</code> is selected, and click <code>search</code>.
+You should find about five values are left.
+Modify each of these values to be 9 by right clicking the value &gt; go here in debugger. Right click &gt; freeze RAM address and enter 09.</p>
+</details>
+<p><img alt="cheating" src="../img/objectives/o11/cheat.png" /></p>
+<p>After we've found the RAM values and updated them to 9, change areas in the game and we'll see our score is now 999.</p>
+<details class="tip">
+<summary>Glitches</summary>
+<p>You'll need to update more than just the three values shown as the score which is why we don't filter down to only three. If you don't, the game is still playable and winnable, but the images get a bit broken and you have to 'guess' where the different objects are.
+If you try to set the values to their max ('FF'), things also get glitchy.
+<img alt="Glitchy" src="../img/objectives/o11/glitch.png" /></p>
+</details>
+<p>Now when we continue to the "end" of the game, we see a platform has appeared.</p>
+<details class="tip">
+<summary>Save State</summary>
+<p>It's pretty easy to mess up this jump (and the entire game, really), so using the state save and quick load saved a lot of my sanity, especially before this jump!</p>
+</details>
+<p><img alt="New score" src="../img/objectives/o11/999.png" /></p>
+<p>After we leap over the two platforms and bypass or kill one more enemy, we get to the final room. If we've updated the values correctly, we see the game as intended. If not, we see half-images scattered over the room, but we can win anyway by ignoring the visual input and just treating them as if they are displayed as intended.</p>
+<p><img alt="success" src="../img/objectives/o11/success.png" /></p>
+<p><img alt="glory" src="../img/objectives/o11/glory.png" /></p>
+<div class="admonition success">
+<p class="admonition-title">Answer</p>
+<p>!tom+elf!</p>
+</div>
+<h2 id="response">Response<a class="headerlink" href="#response" title="Permanent link">⚓︎</a></h2>
+<div class="admonition quote">
+<p class="admonition-title">Tinsel Upatree</p>
+<p>Whoa, you found it!<br/>
+What version is it?<br/>
+Did you know that many games had multiple versions released? Word is: volume 2 has 2 versions!<br/>
+You have all three? What a glorious collection!</p>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
               </article>
             </div>
           
@@ -1209,14 +1388,14 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "/", "features": ["toc.integrate", "content.code.copy", "navigation.sections"], "search": "/assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["toc.integrate", "content.code.copy", "navigation.sections"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="/assets/javascripts/bundle.d7c377c4.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7c377c4.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
       
-        <script src="/js/tablesort.js"></script>
+        <script src="../js/tablesort.js"></script>
       
     
   </body>

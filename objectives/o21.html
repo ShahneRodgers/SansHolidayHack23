@@ -11,21 +11,25 @@
       
       
       
+        <link rel="prev" href="o20.html">
       
       
-      <link rel="icon" href="/img/misc/favicon.ico">
+        <link rel="next" href="o22.html">
+      
+      
+      <link rel="icon" href="../img/misc/favicon.ico">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
     
     
       
-        <title>SANS Holiday Hack Challenge 2023 Write-Up</title>
+        <title>Camera Access - SANS Holiday Hack Challenge 2023 Write-Up</title>
       
     
     
-      <link rel="stylesheet" href="/assets/stylesheets/main.50c56a3b.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.50c56a3b.min.css">
       
         
-        <link rel="stylesheet" href="/assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -44,9 +48,9 @@
       
     
     
-      <link rel="stylesheet" href="/css/extra.css">
+      <link rel="stylesheet" href="../css/extra.css">
     
-    <script>__md_scope=new URL("/",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -71,6 +75,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#camera-access" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -83,7 +92,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="/index.html" title="SANS Holiday Hack Challenge 2023 Write-Up" class="md-header__button md-logo" aria-label="SANS Holiday Hack Challenge 2023 Write-Up" data-md-component="logo">
+    <a href="../index.html" title="SANS Holiday Hack Challenge 2023 Write-Up" class="md-header__button md-logo" aria-label="SANS Holiday Hack Challenge 2023 Write-Up" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 15.26V13h-4l4-4h-3l3-3h-2l3-3 3 3h-2l3 3h-3l4 4h-4v2.76c2.13.71 3.68 1.91 4 3.24-1.7-.13-3.38-.46-5-1-1.21.61-2.63 1-4 1-1.29 0-2.83-.42-4-1-1.63.54-3.28.87-5 1 .54-2.23 4.4-4 9-4 1.05 0 2.06.09 3 .26M8 19s-3 1-6 1v2c3 0 6-1 6-1s2 1 4 1 4-1 4-1 3 1 6 1v-2c-3 0-6-1-6-1s-2 1-4 1-4-1-4-1Z"/></svg>
@@ -103,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              Camera Access
             
           </span>
         </div>
@@ -206,7 +215,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/index.html" title="SANS Holiday Hack Challenge 2023 Write-Up" class="md-nav__button md-logo" aria-label="SANS Holiday Hack Challenge 2023 Write-Up" data-md-component="logo">
+    <a href="../index.html" title="SANS Holiday Hack Challenge 2023 Write-Up" class="md-nav__button md-logo" aria-label="SANS Holiday Hack Challenge 2023 Write-Up" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 15.26V13h-4l4-4h-3l3-3h-2l3-3 3 3h-2l3 3h-3l4 4h-4v2.76c2.13.71 3.68 1.91 4 3.24-1.7-.13-3.38-.46-5-1-1.21.61-2.63 1-4 1-1.29 0-2.83-.42-4-1-1.63.54-3.28.87-5 1 .54-2.23 4.4-4 9-4 1.05 0 2.06.09 3 .26M8 19s-3 1-6 1v2c3 0 6-1 6-1s2 1 4 1 4-1 4-1 3 1 6 1v-2c-3 0-6-1-6-1s-2 1-4 1-4-1-4-1Z"/></svg>
@@ -224,7 +233,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/index.html" class="md-nav__link">
+      <a href="../index.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -241,8 +250,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -251,12 +262,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
@@ -270,7 +281,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Objectives
@@ -321,7 +332,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o2.html" class="md-nav__link">
+      <a href="o2.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -344,7 +355,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o3.html" class="md-nav__link">
+      <a href="o3.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -367,7 +378,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o4.html" class="md-nav__link">
+      <a href="o4.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -390,7 +401,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o5.html" class="md-nav__link">
+      <a href="o5.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -458,7 +469,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o6.html" class="md-nav__link">
+      <a href="o6.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -481,7 +492,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o7.html" class="md-nav__link">
+      <a href="o7.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -504,7 +515,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o15.html" class="md-nav__link">
+      <a href="o15.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -572,7 +583,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o8.html" class="md-nav__link">
+      <a href="o8.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -595,7 +606,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o18.html" class="md-nav__link">
+      <a href="o18.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -618,7 +629,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o19.html" class="md-nav__link">
+      <a href="o19.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -686,7 +697,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o9.html" class="md-nav__link">
+      <a href="o9.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -709,7 +720,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o10.html" class="md-nav__link">
+      <a href="o10.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -732,7 +743,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o11.html" class="md-nav__link">
+      <a href="o11.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -800,7 +811,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o12.html" class="md-nav__link">
+      <a href="o12.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -823,7 +834,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o13.html" class="md-nav__link">
+      <a href="o13.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -846,7 +857,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o14.html" class="md-nav__link">
+      <a href="o14.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -914,7 +925,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o16.html" class="md-nav__link">
+      <a href="o16.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -937,7 +948,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o17.html" class="md-nav__link">
+      <a href="o17.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -965,19 +976,21 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" checked>
         
           
           <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
@@ -991,7 +1004,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_7">
             <span class="md-nav__icon md-icon"></span>
             Space Island
@@ -1005,7 +1018,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o20.html" class="md-nav__link">
+      <a href="o20.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -1025,10 +1038,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="/objectives/o21.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
+  
+  <span class="md-ellipsis">
+    Camera Access
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="o21.html" class="md-nav__link md-nav__link--active">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -1039,6 +1074,62 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objective" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objective
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hints
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solution
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#response" class="md-nav__link">
+    <span class="md-ellipsis">
+      Response
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1051,7 +1142,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o22.html" class="md-nav__link">
+      <a href="o22.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -1129,7 +1220,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/easter_eggs.html" class="md-nav__link">
+      <a href="../easter_eggs.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1162,8 +1253,109 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
-  <h1>404 - Not found</h1>
+                  
 
+
+<h1 id="camera-access">Camera Access<a class="headerlink" href="#camera-access" title="Permanent link">⚓︎</a></h1>
+<p><strong>Difficulty</strong>: <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 12 12 2 5 12h1.86L3 18h7v4h4v-4h7l-3.86-6H19Z"/></svg></span><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 12 12 2 5 12h1.86L3 18h7v4h4v-4h7l-3.86-6H19Z"/></svg></span><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 12 12 2 5 12h1.86L3 18h7v4h4v-4h7l-3.86-6H19Z"/></svg></span><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 12 12 2 5 12h1.86L3 18h7v4h4v-4h7l-3.86-6H19m-3.84-2H13.5l3.84 6H6.67l3.86-6H8.84L12 5.5l3.16 4.5Z"/></svg></span><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 12 12 2 5 12h1.86L3 18h7v4h4v-4h7l-3.86-6H19m-3.84-2H13.5l3.84 6H6.67l3.86-6H8.84L12 5.5l3.16 4.5Z"/></svg></span><br/>
+<strong>Direct link</strong>: <a href="https://www.holidayhackchallenge.com/2023/client_container.zip">client_container.zip</a> and <a href="https://nanosat.one/?&amp;challenge=satmissile">NanoSat Christmas Comms</a></p>
+<h2 id="objective">Objective<a class="headerlink" href="#objective" title="Permanent link">⚓︎</a></h2>
+<div class="admonition question">
+<p class="admonition-title">Request</p>
+<p>Gain access to Jack's camera. What's the third item on Jack's TODO list?</p>
+</div>
+<details class="quote">
+<summary>Wombley Cube</summary>
+<p>This is Ground Control, do you read me...? Ground Control to --<br/>
+Hey! How'd you get in here? That tram is the only accessible point of entry and I secured it with MFA!
+No matter, you may have had the skills to find and infiltrate the satellite ground station, but there's no chance you can hack your way into the satellite itself!
+The nanosat's Supervisor Directory will remain hidden, and you'll never discover the mastermind behind all this.
+So don't even waste your time trying.</p>
+</details>
+<h2 id="hints">Hints<a class="headerlink" href="#hints" title="Permanent link">⚓︎</a></h2>
+<details class="tip">
+<summary>Hubris is a Virtue</summary>
+<p>In his hubris, Wombley revealed that he thinks you won't be able to access the satellite's "Supervisor Directory". There must be a good reason he mentioned that specifically, and a way to access it. He also said there's someone else masterminding the whole plot. There must be a way to discover who that is using the nanosat.</p>
+</details>
+<h2 id="solution">Solution<a class="headerlink" href="#solution" title="Permanent link">⚓︎</a></h2>
+<h3 id="find-the-satellite-controller-room-and-dependencies">Find the Satellite Controller Room and dependencies<a class="headerlink" href="#find-the-satellite-controller-room-and-dependencies" title="Permanent link">⚓︎</a></h3>
+<p>For this objective, we need to go up the stairs into the satellite room:</p>
+<p><img alt="Location" src="../img/objectives/o21/location.png" /></p>
+<p>The first step in this challenge is to download the <a href="https://www.holidayhackchallenge.com/2023/client_container.zip">client_container.zip</a> and follow its README.md to run it in Docker. You can then connect to it using a VNC like they suggest, or by <a href="http://localhost:6901/vnc.html">using NoVNC in your browser</a>.</p>
+<h3 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">⚓︎</a></h3>
+<p>First, we need to set up WireGuard; open the <a href="https://nanosat.one/?&amp;challenge=satmissile">NanoSat Christmas Comms</a> terminal behind Wombley, click on the crocodile face and choose <code>Time Travel</code>. Give it a couple of minutes to generate WireGuard config and then copy the second set of WireGuard config:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">###BEGIN###</span>
+<span class="c1">### This is your Wireguard configuration file. Please save it, configure a local Wireguard client, and connect to the Target. ###</span>
+
+&lt;YOUR<span class="w"> </span>CONFIG<span class="w"> </span>TO<span class="w"> </span>COPY<span class="w"> </span>IS<span class="w"> </span>HERE&gt;
+
+<span class="c1">###END####</span>
+</code></pre></div>
+<details class="tip">
+<summary>Opening applications</summary>
+<p>To open applications on the Docker machine, right-click on the Desktop and then find the application you want. Gedit is good for copying the WireGuard config, but you mostly just need the "Satellite Tools" &gt; "Launch NanoSat MO Base Station Tool"</p>
+</details>
+<p>If you're using Windows or Linux, you should be able to set up WireGuard in the Docker container by saving that config in <code>/etc/wireguard/wg0.conf</code> and then running <code>wg-quick up wg0</code>. If you're running on MacOS, you may need to install WireGuard on your host machine and then set it up there.</p>
+<p>After WireGuard is running, you can confirm it's working correctly by using curl in the Docker container:
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span><span class="m">10</span>.1.1.1:1024<span class="w"> </span>-v
+</code></pre></div>
+It's not running HTTP so you won't get a response, but curl will say <code>Connected to 10.1.1.1</code> if WireGuard is configured correctly and <code>Failed to connect</code> otherwise.</p>
+<h3 id="start-the-camera">Start the camera<a class="headerlink" href="#start-the-camera" title="Permanent link">⚓︎</a></h3>
+<p>Now we can start actually communicating with the satellite. First, connect to it by opening the "NanoSat MO Base Station Tool" and fetching information from <code>maltcp://10.1.1.1:1024/nanosat-mo-supervisor-Directory</code> as specified in the Readme:</p>
+<p><img alt="CTT connected" src="../img/objectives/o21/connected.png" /></p>
+<p>Connect to the supervisor by selecting it in the "providers" list on the left and choosing "Connect to Selected Provider".
+In the "App Launcher Service", we can see no apps are running so we'll need to start the camera by selecting it and then choosing "runApp". </p>
+<h3 id="take-a-photo">Take a photo<a class="headerlink" href="#take-a-photo" title="Permanent link">⚓︎</a></h3>
+<p>Once the camera says it is running, go back to the "Communications Settings Directory" and "fetch information" again. Now we can select and connect to the camera like we did previously with the supervisor. </p>
+<p><img alt="Camera provider" src="../img/objectives/o21/camera.png" /></p>
+<p>In the camera provider, the "Parameter Service" tab lets us fetch information from the camera. Unfortunately, the "NumberOfSnapsTaken" is 0, so I guess we'll need to take one:</p>
+<p><img alt="No pictures available" src="../img/objectives/o21/no_pics.png" /></p>
+<p>We can do that in the "Action Service" tab by clicking on the "Base64SnapImage" row, clicking "Submit Image" and using the default values. Now when we go back to the "Parameter Service", we can see that "NumberOfSnapsTaken" is 1, so we just need to retrieve the photo.</p>
+<h3 id="retrieve-the-photo">Retrieve the photo<a class="headerlink" href="#retrieve-the-photo" title="Permanent link">⚓︎</a></h3>
+<p>If we select the "Base64SnapImage" and run the "getValue" command, we do get back the base64 of the picture, but the GUI makes it completely unusable:</p>
+<p><img alt="Thanks Java" src="../img/objectives/o21/unhelpful.png" /></p>
+<p>so we have to figure out another way to get it. We know that the satellite is sending it over <code>maltcp</code>, we know from <a href="http://www.youtube.com/watch?v=qQaA1w6WjGw">Henry Reed's space talk</a> that satellite comms are often unencrypted and the Docker container has WireShark installed, so that seems like a probable next step.</p>
+<p>Start WireShark running on wg0 and request the image again. Once it's received, stop WireGuard and save the PCAP so you have something like <a href="../img/misc/wg1.pcapng">this pcap</a>.</p>
+<details class="warning">
+<summary>Clipboard limits</summary>
+<p>Originally, I tried copy-pasting from WireShark in the container but there were clipboard limits with my VNC client so I only got a partial broken start of the image: <img alt="broken PNG" src="../img/objectives/o21/limited.jpg" /></p>
+</details>
+<p>Copy the pcap across to your host machine using <a href="https://docs.docker.com/engine/reference/commandline/cp/">Docker's cp command</a>, open it in WireShark and right-click and choose "Follow TCP Stream". Once all the packets have loaded (~967 server packets), you can right-click, select all and copy the data. Paste it into <a href="https://gchq.github.io/CyberChef/#recipe=From_Base64('A-Za-z0-9%2B/%3D',true,false)">CyberChef</a> and remove the initial preamble so you're just left with the PNG Base64 (which starts with <code>/9j/</code>):</p>
+<p><img alt="Cyberchef" src="../img/objectives/o21/cyberchef.png" /></p>
+<p>When you go to save the output, Cyberchef will detect it as a jpg file:</p>
+<p><img alt="Glory" src="../img/objectives/o21/glory.jpg" /></p>
+<div class="admonition success">
+<p class="admonition-title">Answer</p>
+<p>Conquer Holiday Season!</p>
+</div>
+<h2 id="response">Response<a class="headerlink" href="#response" title="Permanent link">⚓︎</a></h2>
+<div class="admonition quote">
+<p class="admonition-title">Wombley Cube</p>
+<p>A fellow sabateur, are you? Or just a misguided hero-wannabe?<br/>
+You think you're saving the holiday season, but you're meddling in something you could never understand!<br/>
+Yes, I sided with Jack, because Santa's betrayed the elves by forcing us to move our operations to these islands!<br/>
+He put the entire holiday season at risk, and I could not allow this, I had to do something.<br/>
+Knowing my skillset, Jack secretly informed me of his plan to show Santa the error of his ways, and recruited me to aid his mission.<br/>
+Why tell you all this? Because it won't change anything. Everything is already in motion, and you're too late.<br/>
+Plus, the satellite is state-of-the-art, and -- oh drat, did I leave the admin tools open?<br/>
+For some reason, I can't move when you're nearby, but if I could, I would surely stop you!<br/></p>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
               </article>
             </div>
           
@@ -1209,14 +1401,14 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "/", "features": ["toc.integrate", "content.code.copy", "navigation.sections"], "search": "/assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["toc.integrate", "content.code.copy", "navigation.sections"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="/assets/javascripts/bundle.d7c377c4.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7c377c4.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
       
-        <script src="/js/tablesort.js"></script>
+        <script src="../js/tablesort.js"></script>
       
     
   </body>

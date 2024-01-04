@@ -11,21 +11,25 @@
       
       
       
+        <link rel="prev" href="o15.html">
       
       
-      <link rel="icon" href="/img/misc/favicon.ico">
+        <link rel="next" href="o18.html">
+      
+      
+      <link rel="icon" href="../img/misc/favicon.ico">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
     
     
       
-        <title>SANS Holiday Hack Challenge 2023 Write-Up</title>
+        <title>Faster Lock Combination - SANS Holiday Hack Challenge 2023 Write-Up</title>
       
     
     
-      <link rel="stylesheet" href="/assets/stylesheets/main.50c56a3b.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.50c56a3b.min.css">
       
         
-        <link rel="stylesheet" href="/assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -44,9 +48,9 @@
       
     
     
-      <link rel="stylesheet" href="/css/extra.css">
+      <link rel="stylesheet" href="../css/extra.css">
     
-    <script>__md_scope=new URL("/",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -71,6 +75,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#faster-lock-combination" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -83,7 +92,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="/index.html" title="SANS Holiday Hack Challenge 2023 Write-Up" class="md-header__button md-logo" aria-label="SANS Holiday Hack Challenge 2023 Write-Up" data-md-component="logo">
+    <a href="../index.html" title="SANS Holiday Hack Challenge 2023 Write-Up" class="md-header__button md-logo" aria-label="SANS Holiday Hack Challenge 2023 Write-Up" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 15.26V13h-4l4-4h-3l3-3h-2l3-3 3 3h-2l3 3h-3l4 4h-4v2.76c2.13.71 3.68 1.91 4 3.24-1.7-.13-3.38-.46-5-1-1.21.61-2.63 1-4 1-1.29 0-2.83-.42-4-1-1.63.54-3.28.87-5 1 .54-2.23 4.4-4 9-4 1.05 0 2.06.09 3 .26M8 19s-3 1-6 1v2c3 0 6-1 6-1s2 1 4 1 4-1 4-1 3 1 6 1v-2c-3 0-6-1-6-1s-2 1-4 1-4-1-4-1Z"/></svg>
@@ -103,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              Faster Lock Combination
             
           </span>
         </div>
@@ -206,7 +215,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/index.html" title="SANS Holiday Hack Challenge 2023 Write-Up" class="md-nav__button md-logo" aria-label="SANS Holiday Hack Challenge 2023 Write-Up" data-md-component="logo">
+    <a href="../index.html" title="SANS Holiday Hack Challenge 2023 Write-Up" class="md-nav__button md-logo" aria-label="SANS Holiday Hack Challenge 2023 Write-Up" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 15.26V13h-4l4-4h-3l3-3h-2l3-3 3 3h-2l3 3h-3l4 4h-4v2.76c2.13.71 3.68 1.91 4 3.24-1.7-.13-3.38-.46-5-1-1.21.61-2.63 1-4 1-1.29 0-2.83-.42-4-1-1.63.54-3.28.87-5 1 .54-2.23 4.4-4 9-4 1.05 0 2.06.09 3 .26M8 19s-3 1-6 1v2c3 0 6-1 6-1s2 1 4 1 4-1 4-1 3 1 6 1v-2c-3 0-6-1-6-1s-2 1-4 1-4-1-4-1Z"/></svg>
@@ -224,7 +233,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/index.html" class="md-nav__link">
+      <a href="../index.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -241,8 +250,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -251,12 +262,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
@@ -270,7 +281,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Objectives
@@ -321,7 +332,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o2.html" class="md-nav__link">
+      <a href="o2.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -344,7 +355,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o3.html" class="md-nav__link">
+      <a href="o3.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -367,7 +378,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o4.html" class="md-nav__link">
+      <a href="o4.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -390,7 +401,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o5.html" class="md-nav__link">
+      <a href="o5.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -458,7 +469,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o6.html" class="md-nav__link">
+      <a href="o6.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -481,7 +492,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o7.html" class="md-nav__link">
+      <a href="o7.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -504,7 +515,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o15.html" class="md-nav__link">
+      <a href="o15.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -532,19 +543,21 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
         
           
           <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
@@ -558,7 +571,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_3">
             <span class="md-nav__icon md-icon"></span>
             Steampunk Island
@@ -569,10 +582,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="/objectives/o8.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
+  
+  <span class="md-ellipsis">
+    Faster Lock Combination
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="o8.html" class="md-nav__link md-nav__link--active">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -583,6 +618,53 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objective" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objective
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solution
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#response" class="md-nav__link">
+    <span class="md-ellipsis">
+      Response
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -595,7 +677,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o18.html" class="md-nav__link">
+      <a href="o18.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -618,7 +700,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o19.html" class="md-nav__link">
+      <a href="o19.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -686,7 +768,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o9.html" class="md-nav__link">
+      <a href="o9.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -709,7 +791,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o10.html" class="md-nav__link">
+      <a href="o10.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -732,7 +814,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o11.html" class="md-nav__link">
+      <a href="o11.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -800,7 +882,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o12.html" class="md-nav__link">
+      <a href="o12.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -823,7 +905,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o13.html" class="md-nav__link">
+      <a href="o13.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -846,7 +928,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o14.html" class="md-nav__link">
+      <a href="o14.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -914,7 +996,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o16.html" class="md-nav__link">
+      <a href="o16.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -937,7 +1019,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o17.html" class="md-nav__link">
+      <a href="o17.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -1005,7 +1087,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o20.html" class="md-nav__link">
+      <a href="o20.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -1028,7 +1110,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o21.html" class="md-nav__link">
+      <a href="o21.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -1051,7 +1133,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/objectives/o22.html" class="md-nav__link">
+      <a href="o22.html" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2H5m0 2h14v14H5V5m2 2v2h10V7H7m0 4v2h10v-2H7m0 4v2h7v-2H7Z"/></svg>
@@ -1129,7 +1211,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/easter_eggs.html" class="md-nav__link">
+      <a href="../easter_eggs.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1162,8 +1244,126 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
-  <h1>404 - Not found</h1>
+                  
 
+
+<h1 id="faster-lock-combination">Faster Lock Combination<a class="headerlink" href="#faster-lock-combination" title="Permanent link">⚓︎</a></h1>
+<p><strong>Difficulty</strong>: <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 12 12 2 5 12h1.86L3 18h7v4h4v-4h7l-3.86-6H19Z"/></svg></span><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 12 12 2 5 12h1.86L3 18h7v4h4v-4h7l-3.86-6H19Z"/></svg></span><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 12 12 2 5 12h1.86L3 18h7v4h4v-4h7l-3.86-6H19m-3.84-2H13.5l3.84 6H6.67l3.86-6H8.84L12 5.5l3.16 4.5Z"/></svg></span><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 12 12 2 5 12h1.86L3 18h7v4h4v-4h7l-3.86-6H19m-3.84-2H13.5l3.84 6H6.67l3.86-6H8.84L12 5.5l3.16 4.5Z"/></svg></span><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 12 12 2 5 12h1.86L3 18h7v4h4v-4h7l-3.86-6H19m-3.84-2H13.5l3.84 6H6.67l3.86-6H8.84L12 5.5l3.16 4.5Z"/></svg></span><br/>
+<strong>Direct link</strong>: <a href="https://paddlelockdecode.com/?&amp;challenge=fasterlock">Faster Lock</a></p>
+<h2 id="objective">Objective<a class="headerlink" href="#objective" title="Permanent link">⚓︎</a></h2>
+<div class="admonition question">
+<p class="admonition-title">Request</p>
+<p>Over on Steampunk Island, Bow Ninecandle is having trouble opening a padlock. Do some research and see if you can help open it!</p>
+</div>
+<details class="quote">
+<summary>Bow Ninecandle</summary>
+<p>Hey there! I'm Bow Ninecandle, and I've got a bit of a... 'pressing' situation.<br/>
+You see, I need to get into the lavatory, but here's the twist: it's secured with a combination padlock.<br/>
+Talk about bad timing, right? I could really use your help to figure this out before things get... well, urgent.<br/>
+I'm sure there are some clever tricks and tips floating around <a href="https://www.youtube.com/watch?v=27rE5ZvWLU0">the web</a> that can help us crack this code without too much of a flush... I mean fuss.<br/>
+Remember, we're aiming for quick and easy solutions here - nothing too complex.<br/>
+Once we've gathered a few possible combinations, let's team up and try them out.<br/>
+I'm crossing my legs - I mean fingers - hoping we can unlock this door soon.<br/>
+After all, everyone knows that the key to holiday happiness is an accessible lavatory!<br/>
+Let's dive into this challenge and hopefully, we won't have to 'hold it' for too long! Ready to help me out?<br/></p>
+</details>
+<h2 id="solution">Solution<a class="headerlink" href="#solution" title="Permanent link">⚓︎</a></h2>
+<h3 id="step-1-find-the-sticky-number">Step 1: Find the Sticky Number<a class="headerlink" href="#step-1-find-the-sticky-number" title="Permanent link">⚓︎</a></h3>
+<p>Click on the top of the padlock and pull it up slightly to get a little bit of tension. Spin the lock with the arrow keys until it starts to slow down at a specific number:</p>
+<p><img alt="Sticky Number" src="../img/objectives/o8/sticky.png" /></p>
+<p>Record this as your sticky number. For me, it was 13, but it changes each time.</p>
+<h3 id="step-2-find-the-guess-numbers">Step 2: Find the Guess Numbers<a class="headerlink" href="#step-2-find-the-guess-numbers" title="Permanent link">⚓︎</a></h3>
+<p>To find the sticky numbers, move the lock back down to 35. Now, put a lot of tension on the lock so that it barely moves (the status should be dark red). If it gets stuck at half increments around a number, record the middle number. If it gets stuck on full numbers, release some tension and move it up half a number. You should find two numbers it gets stuck on in the 35 - 10 range (widen your search otherwise).</p>
+<p>My magic numbers were 3 and 8.</p>
+<h3 id="step-3-calculate-the-first-digit">Step 3: Calculate the first digit<a class="headerlink" href="#step-3-calculate-the-first-digit" title="Permanent link">⚓︎</a></h3>
+<p>MAGIC_NUMBER + 5. So for me, 17</p>
+<h3 id="step-4-calculate-the-last-digit">Step 4: Calculate the last digit<a class="headerlink" href="#step-4-calculate-the-last-digit" title="Permanent link">⚓︎</a></h3>
+<p>We need to figure out:</p>
+<div class="highlight"><pre><span></span><code>a. FIRST_DIGIT % 4.
+b. magic number, magic number + 10, magic number + 20, magic number + 30
+c. magic number 2 , magic number 2 + 10, magic number 2 + 20, magic number 2 + 30
+d. Which of the results of a and c % 4 == a
+</code></pre></div>
+<p>So for me, that's:</p>
+<div class="highlight"><pre><span></span><code>a. 17 % 4 = 1
+
+   | Magic number  | MN + 10  | MN + 20  | MN + 30  |
+b. | 3             | 13       | 23       | 33       |
+c. | 8             | 18       | 28       | 38       |
+
+d. 13 and 33
+</code></pre></div>
+<p>Then put heavy tension on your lock and move it around those two numbers. The looser one is your second number; for me, that's 33.</p>
+<h3 id="step-5-calculate-the-middle-digit-possibilities">Step 5: Calculate the middle digit possibilities<a class="headerlink" href="#step-5-calculate-the-middle-digit-possibilities" title="Permanent link">⚓︎</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Initial</th>
+<th style="text-align: left;">+ 2</th>
+<th style="text-align: left;">+ 10</th>
+<th style="text-align: left;">+ 18</th>
+<th style="text-align: left;">+ 26</th>
+<th style="text-align: left;">+ 34</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Remainder (1)</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">11</td>
+<td style="text-align: left;">19</td>
+<td style="text-align: left;">27</td>
+<td style="text-align: left;">35</td>
+</tr>
+<tr>
+<td style="text-align: left;">Remainder + 4 (5)</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">23</td>
+<td style="text-align: left;">31</td>
+<td style="text-align: left;">39</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">If your value is over 39</p>
+<p>Just let it wrap around, ie val % 39</p>
+</div>
+<p>Eliminate any values within 2 from your first and third digits. So for me, I can eliminate
+19 (too close to 17), 35 (too close to 33), 15 (too close to 17) and 31 (too close to 33).</p>
+<h3 id="step-6-attempt-all-the-options">Step 6: Attempt all the options<a class="headerlink" href="#step-6-attempt-all-the-options" title="Permanent link">⚓︎</a></h3>
+<p>Now just attempt all the possibilities:
+* 17 3 33
+* 17 11 33
+* 17 27 33
+* 17 7 33
+* 17 23 33
+* 17 39 33</p>
+<div class="admonition note">
+<p class="admonition-title">Maybe try twice</p>
+<p>I was always terrible at opening these sorts of locks; even in high school when I knew the correct combination, it took me a couple of tries 😅</p>
+</div>
+<h2 id="response">Response<a class="headerlink" href="#response" title="Permanent link">⚓︎</a></h2>
+<div class="admonition quote">
+<p class="admonition-title">Bow Ninecandle</p>
+<p>Oh, thank heavens! You're a lifesaver! With your knack for cracking codes, we've just turned a potential 'loo catastrophe' into a holiday triumph!</p>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
               </article>
             </div>
           
@@ -1209,14 +1409,14 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "/", "features": ["toc.integrate", "content.code.copy", "navigation.sections"], "search": "/assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["toc.integrate", "content.code.copy", "navigation.sections"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="/assets/javascripts/bundle.d7c377c4.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7c377c4.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
       
-        <script src="/js/tablesort.js"></script>
+        <script src="../js/tablesort.js"></script>
       
     
   </body>
